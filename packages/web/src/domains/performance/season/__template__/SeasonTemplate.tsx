@@ -5,10 +5,12 @@ import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
 
 // import { SubscribeSection } from '@web/ui/molecules';
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
-import { LegacyContentNotice } from '@web/ui/molecules';
+import { NewsSubscribeCTA } from '@web/ui/molecules';
 
 import { SeasonPage, SeasonPageContext } from '../types';
 import { SingleSeasonProvider } from '../__context__';
+
+import { Shows, NeighboringSeasons } from './components';
 
 const SeasonLanding: React.FC<PageProps<PageData, SeasonPageContext>> = ({
     data,
@@ -43,14 +45,9 @@ const SeasonLanding: React.FC<PageProps<PageData, SeasonPageContext>> = ({
                     }}
                 />
             )}
-            <LegacyContentNotice
-                contentType="season"
-                title={`${season.title} Season`}
-                subTitle={season.tagline}
-                legacyURL={`https://theplaygroundtheatre.org/season/${slug}`}
-                legacyURLText="See season on old website"
-            />
-            {/* <SubscribeSection /> */}
+            <Shows />
+            <NeighboringSeasons />
+            <NewsSubscribeCTA />
         </SingleSeasonProvider>
     );
 };

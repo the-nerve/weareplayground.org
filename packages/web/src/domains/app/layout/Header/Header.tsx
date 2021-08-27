@@ -3,7 +3,7 @@ import React from 'react';
 import { Container, Logo } from '@web/ui/core';
 import { Link } from '@web/domains/app/routing';
 
-import { DesktopNavBar } from './DesktopNavBar/DesktopNavBar';
+import { DesktopNavigation } from './DesktopNavigation/DesktopNavigation';
 
 import { HeaderProps } from './__types';
 import * as styled from './__styles';
@@ -21,7 +21,7 @@ export const Header: React.FC<HeaderProps> = () => {
                     />
                     <h1 className="u-visually-hidden">The Nerve Theatre</h1>
                 </Link>
-                <DesktopNavBar />
+                <DesktopNavigation />
             </Container>
         </styled.Header>
     );

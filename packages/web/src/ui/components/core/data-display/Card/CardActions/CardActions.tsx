@@ -6,6 +6,7 @@ import { spacing, AvailableComponentSpacing } from '@web/ui/tokens';
 export interface CardActionsProps {
     disableSpacing?: true;
     itemSpacing?: AvailableComponentSpacing;
+    className?: string;
 }
 
 // STYLES
@@ -27,11 +28,13 @@ export const StyledCardActions = styled.div<CardActionsProps>`
 export const CardActions: React.FC<CardActionsProps> = ({
     disableSpacing,
     itemSpacing = 'm',
+    className,
     children,
 }) => (
     <StyledCardActions
         itemSpacing={itemSpacing}
         disableSpacing={disableSpacing}
+        className={className}
     >
         {children}
     </StyledCardActions>

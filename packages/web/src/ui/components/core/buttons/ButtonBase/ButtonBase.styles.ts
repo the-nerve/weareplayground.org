@@ -12,7 +12,7 @@ import { ButtonBaseProps } from './ButtonBase.d';
 export const buttonSizes = {
     s: css`
         /* Custom padding values make button fine-tuning and readability easier -- don't make a habit of this. */
-        padding: 4px 12px 5px 12px;
+        padding: 5px 12px 5px 12px;
         ${typography.bodyBold.s};
     `,
     m: css`
@@ -32,9 +32,7 @@ const buttonClickScaleAmount = 0.96;
  * It aims to be a simple building block for creating a button.
  * It contains core styling. sizing, & hover logic
  */
-
 export const ButtonBase = styled(Link)<ButtonBaseProps>`
-    align-items: center;
     border-radius: ${borders.defaultRadius};
     cursor: pointer;
     display: inline-flex;
@@ -44,32 +42,39 @@ export const ButtonBase = styled(Link)<ButtonBaseProps>`
     width: auto;
     ${(props) => buttonSizes[props.size]}
 
+    > ._content {
+        align-items: center;
+        display: inline-flex;
+        justify-content: center;
+
+        .start-icon,
+        .end-icon {
+            align-items: center;
+            display: inline-flex;
+            position: relative;
+            transition: ${animation.buttonHover};
+        }
+
+        .start-icon {
+            margin-right: ${spacing.component.xs};
+        }
+        .end-icon {
+            margin-left: ${spacing.component.xs};
+        }
+
+        .loader {
+            line-height: 0;
+            flex: 1;
+        }
+    }
+
     &.--full {
         display: flex;
         width: 100%;
     }
 
-    .start-icon,
-    .end-icon {
-        position: relative;
-        top: 1px;
-        transition: ${animation.buttonHover};
-    }
-
-    .start-icon {
-        margin-right: ${spacing.component.xs};
-    }
-    .end-icon {
-        margin-left: ${spacing.component.xs};
-    }
-
     &.--loading {
         pointer-events: none;
-    }
-
-    > .loader {
-        line-height: 0;
-        flex: 1;
     }
 
     &:hover {

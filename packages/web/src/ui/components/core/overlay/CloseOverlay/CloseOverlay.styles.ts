@@ -4,7 +4,7 @@ import { animation } from '@web/ui/tokens';
 
 export const CloseOverlay = styled.button`
     height: 20px;
-    left: 28px;
+    right: 28px;
     width: 20px;
     position: absolute;
     top: 18px;

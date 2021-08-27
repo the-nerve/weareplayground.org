@@ -5,7 +5,7 @@ export const DateRange = styled.span`
     align-items: center;
     display: flex;
 
-    > i {
-        margin-right: ${spacing.component.s};
+    > svg {
+        margin-right: ${spacing.component.xs};
     }
 `;

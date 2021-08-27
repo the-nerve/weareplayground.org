@@ -5,7 +5,7 @@ const orange: PaletteColor = {
     l1: '#FA7223',
     base: '#F25C05',
     d1: '#D75204',
-    d2: '#D75204',
+    d2: '#BE4804',
 };
 
 const blue: PaletteColor = {

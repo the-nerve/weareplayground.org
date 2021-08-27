@@ -32,6 +32,14 @@ import { ImageProps } from './__types';
  * @param rest (as a spread) All params allowed by the underlying GatsbyImage component, minus the 'image' param (this is handled by Sanity helper utilities)
  */
 export const Image = ({ image, alt, sanityConfig, ...rest }: ImageProps) => {
+    if (!image) {
+        console.log(
+            'An image object was not provided. Nothing will be rendered. Object output:',
+            { image }
+        );
+        return <></>;
+    }
+
     /**
      * This makes our Image component easier to work with, because it allows us to pass in the entire image stack without
      * having to drill down to nested props (super fragile). It is smart enough to know what has been passed in and

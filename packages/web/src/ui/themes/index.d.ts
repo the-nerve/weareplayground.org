@@ -88,6 +88,9 @@ export interface Surfaces {
     paperLight: string;
     paper: string;
     paperDark: string;
+    accentLight: string;
+    accent: string;
+    accentDark: string;
     neutralLight: string;
     neutral: string;
     neutralDark: string;

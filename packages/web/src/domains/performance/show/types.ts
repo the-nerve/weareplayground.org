@@ -46,12 +46,28 @@ export interface ShowAuthor {
     scriptLink?: string;
 }
 
+export type ShowTicketType = 'external' | 'internal' | 'door';
+
+export interface ShowTickets {
+    type: ShowTicketType;
+    externalLink?: string;
+    price?: number;
+}
+
 export interface ShowPerformance {
     datetime: string;
-    status: 'active' | 'cancelled';
+    status: 'active' | 'cancelled' | 'sold-out';
     isPreview: boolean;
-    isPayWhatYouCan: boolean;
+    isPWYW: boolean;
     hasTalkback: boolean;
+    tickets?: ShowTickets;
+}
+
+export interface ShowDetail {
+    copy: string;
+    hasModal: boolean;
+    modalTriggerText?: string;
+    _rawModalContent?: any[];
 }
 
 export type ShowStatus =
@@ -61,3 +77,5 @@ export type ShowStatus =
     | 'coming-soon'
     | 'future'
     | 'cancelled';
+
+export type ShowRating = 'pg' | 'pg13' | 'r';

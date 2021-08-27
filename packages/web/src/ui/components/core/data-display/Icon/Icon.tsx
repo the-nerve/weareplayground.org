@@ -1,19 +1,14 @@
 import React from 'react';
 
 import { IconProps } from './__types';
-
-import { SVGElement } from '../../_utility';
-
 import * as Styled from './__styles';
 import { availableIcons, IconDefinition } from './__manifest__';
 
 /**
- * Icon options we need to decide between:
- * https://ionic.io/ionicons
- * https://linearicons.com/
+ * Outputs SVG Icons and gives us full control over sizing and coloring
  *
- * @param param0
- * @returns
+ * We use icons from this pack:
+ * https://icomoon.io/#icons-icomoon
  */
 
 export const Icon: React.FC<IconProps> = ({
@@ -40,16 +35,14 @@ export const Icon: React.FC<IconProps> = ({
             color={color}
             size={size}
             responsive={responsive}
+            title={title}
+            desc={desc}
             aria-hidden="true"
-        >
-            <SVGElement
-                name={name}
-                path={selectedIcon.path}
-                viewBox={selectedIcon.viewBox}
-                title={title}
-                desc={desc}
-            />
-        </Styled.Icon>
+            role="presentation"
+            path={selectedIcon.path}
+            viewBox={selectedIcon.viewBox}
+            {...others}
+        />
     );
 };
 

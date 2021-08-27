@@ -3,7 +3,7 @@ import { rgba } from 'polished';
 import { spacing } from '@web/ui/tokens';
 
 export const ActionBar = styled.div`
-    background: ${({ theme }) => rgba(theme.surfaces.paperDark, 0.6)};
+    background: ${({ theme }) => rgba(theme.surfaces.paperDark, 0.75)};
     backdrop-filter: blur(5px);
     bottom: 0;
     left: 0;

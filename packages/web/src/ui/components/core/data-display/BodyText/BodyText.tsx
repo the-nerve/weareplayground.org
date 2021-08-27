@@ -8,6 +8,7 @@ export const BodyText: React.FC<BodyTextProps> = ({
     size,
     color,
     weight = 'regular',
+    textTransform,
     className,
     ...others
 }) => (
@@ -16,6 +17,7 @@ export const BodyText: React.FC<BodyTextProps> = ({
         color={color}
         size={size}
         weight={weight}
+        textTransform={textTransform}
         className={className}
         {...others}
     >

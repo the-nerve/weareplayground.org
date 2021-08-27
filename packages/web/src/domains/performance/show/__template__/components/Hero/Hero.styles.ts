@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { Section } from '@web/ui/core';
-import { rgba } from 'polished';
-
-import { spacing } from '@web/ui/tokens';
+import { breakpoints, spacing } from '@web/ui/tokens';
 
 export const Hero = styled(Section)`
     align-items: stretch;
@@ -10,7 +8,7 @@ export const Hero = styled(Section)`
     min-height: 100vh;
     position: relative;
 
-    .content {
+    > .content {
         align-items: center;
         display: flex;
         flex: 1;

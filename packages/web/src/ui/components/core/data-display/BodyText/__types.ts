@@ -18,6 +18,7 @@ export interface BodyTextProps {
     size: AvailableBodyTypography;
     color?: AvailableTypographyTheme;
     weight?: 'regular' | 'bold';
+    textTransform?: 'uppercase' | 'lowercase' | 'capitalize';
     className?: string;
     as?: AllowedTag;
 }

@@ -131,7 +131,7 @@ export const AlternateGivingSection = () => {
                             bgColor="paper"
                             variant="outlined"
                             borderColor="paperLight"
-                            spacing="l"
+                            spacing={{ desktop: 'l', mobile: 'm' }}
                         >
                             <CardHeader
                                 avatar={
@@ -191,7 +191,7 @@ export const AlternateGivingSection = () => {
                             bgColor="paper"
                             variant="outlined"
                             borderColor="paperLight"
-                            spacing="l"
+                            spacing={{ desktop: 'l', mobile: 'm' }}
                         >
                             <CardHeader
                                 avatar={
@@ -243,7 +243,11 @@ export const AlternateGivingSection = () => {
 
                     {/* Share with your friends */}
                     <div className="share">
-                        <Card layout="stacked" spacing="l" bgColor="default">
+                        <Card
+                            layout="stacked"
+                            spacing={{ desktop: 'l', mobile: 'm' }}
+                            bgColor="default"
+                        >
                             <CardHeader
                                 avatar={
                                     <Avatar borderColor="neutral">3</Avatar>

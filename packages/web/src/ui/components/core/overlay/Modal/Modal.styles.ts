@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { rgba } from 'polished';
-import { borders, grid, spacing, zIndex } from '@web/ui/tokens';
+import { borders, breakpoints, grid, spacing, zIndex } from '@web/ui/tokens';
 import { OverlayBase } from '../OverlayBase/OverlayBase';
 import { IModal } from './Modal.d';
+
+const modalBreakpoint = breakpoints.s;
 
 export const Modal = styled(OverlayBase)<IModal>`
     .backdrop,
@@ -26,22 +28,29 @@ export const Modal = styled(OverlayBase)<IModal>`
         display: flex;
         flex-direction: row;
         justify-content: center;
-        padding: ${spacing.component.xl};
+        ${modalBreakpoint} {
+            padding: ${spacing.component.xl};
+        }
     }
 
     .content {
         background-color: ${({ theme }) => theme.surfaces.neutralLight};
         box-shadow: rgba(0, 0, 0, 0.28) 0px 8px 28px;
-        border-radius: ${borders.modalRadius};
         display: flex;
         flex-direction: column;
+        height: 100%;
         margin: 0 auto;
         max-height: 100%;
-        max-width: ${({ containerSize }) => grid[containerSize!]};
         overflow: hidden;
         --webkit-overflow-scrolling: touch;
         position: relative;
         width: 100%;
+
+        ${modalBreakpoint} {
+            border-radius: ${borders.modalRadius};
+            height: auto;
+            max-width: ${({ containerSize }) => grid[containerSize!]};
+        }
     }
 
     header {

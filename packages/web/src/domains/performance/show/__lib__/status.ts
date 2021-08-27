@@ -17,14 +17,14 @@ const now = new Date();
  * @param lastPerformance The date of the first performance
  * @returns
  */
-const isPastShow = (lastPerformance: Date) => {
+export const isPastShow = (lastPerformance: Date) => {
     return isPast(lastPerformance);
 };
 
 /**
  * Determine if the show is active, meaning it is currently running ("now playing")
  */
-const isActiveShow = (firstPerformance: Date, lastPerformance: Date) => {
+export const isActiveShow = (firstPerformance: Date, lastPerformance: Date) => {
     const interval = {
         start: firstPerformance,
         end: lastPerformance,
@@ -35,7 +35,10 @@ const isActiveShow = (firstPerformance: Date, lastPerformance: Date) => {
 /**
  * Determine if the show is "coming soon" meaning it will be opening soon
  */
-const isComingSoonShow = (firstPerformance: Date, lastPerformance: Date) => {
+export const isComingSoonShow = (
+    firstPerformance: Date,
+    lastPerformance: Date
+) => {
     // How many days before a show opens should we consider a show "upcoming"?
     const COMING_SOON_WINDOW_DAYS = 30;
     // How many hours before a show officially opens should we still consider it "opcoming"?

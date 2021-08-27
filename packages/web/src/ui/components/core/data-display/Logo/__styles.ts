@@ -5,7 +5,7 @@ import { LogoProps, AvailableLogoSizes } from './__types';
 const logoWidth: AvailableLogoSizes = {
     xxl: '300px',
     xl: '225px',
-    l: '150px',
+    l: '140px',
     m: '100px',
     s: '75px',
     xs: '50px',

@@ -59,3 +59,11 @@ export const TextButton: React.FC<TextButtonProps> = (props) => {
         </styled.TextButton>
     );
 };
+
+export type {
+    FillButtonProps,
+    GhostButtonProps,
+    OutlineButtonProps,
+    IconButtonProps,
+    TextButtonProps,
+} from './Button.d';

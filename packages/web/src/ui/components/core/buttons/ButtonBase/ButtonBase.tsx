@@ -40,17 +40,21 @@ export const ButtonBase: React.FC<ButtonBaseProps> = (props) => {
             onClick={onClick}
             {...others}
         >
-            {isLoading ? (
-                <div className="loader">
-                    <CircularProgress size={loaderIconSize} />
-                </div>
-            ) : (
-                <>
-                    {startIcon && <div className="start-icon">{startIcon}</div>}
-                    {children}
-                    {endIcon && <div className="end-icon">{endIcon}</div>}
-                </>
-            )}
+            <span className="_content">
+                {isLoading ? (
+                    <div className="loader">
+                        <CircularProgress size={loaderIconSize} />
+                    </div>
+                ) : (
+                    <>
+                        {startIcon && (
+                            <div className="start-icon">{startIcon}</div>
+                        )}
+                        {children}
+                        {endIcon && <div className="end-icon">{endIcon}</div>}
+                    </>
+                )}
+            </span>
         </styled.ButtonBase>
     );
 };

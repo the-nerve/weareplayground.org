@@ -6,6 +6,7 @@ import { spacing, AvailableComponentSpacing } from '@web/ui/tokens';
 export interface CardContentProps {
     verticalSpacing?: AvailableComponentSpacing;
     disableSpacing?: true;
+    className?: string;
 }
 
 // STYLES
@@ -30,11 +31,13 @@ export const StyledCardContent = styled.div<CardContentProps>`
 export const CardContent: React.FC<CardContentProps> = ({
     verticalSpacing = 'l',
     disableSpacing,
+    className,
     children,
 }) => (
     <StyledCardContent
         verticalSpacing={verticalSpacing}
         disableSpacing={disableSpacing}
+        className={className}
     >
         {children}
     </StyledCardContent>

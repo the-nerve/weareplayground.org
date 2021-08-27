@@ -1,10 +1,12 @@
 import React from 'react';
-import { format, isValid } from 'date-fns';
+import { format } from 'date-fns';
 import * as styled from './DateRange.styles';
 
 export const DateRange: React.FC<DateRangeProps> = ({
     startDate,
     endDate,
+    monthTemplate = 'MMM dd',
+    yearTemplate = 'yyyy',
     icon,
 }) => {
     const start = new Date(startDate);
@@ -15,8 +17,8 @@ export const DateRange: React.FC<DateRangeProps> = ({
         <styled.DateRange>
             {icon && icon}
             <span>
-                {format(start, 'MMM dd')} - {format(end, 'MMM dd')},{' '}
-                {format(year, 'yyyy')}
+                {format(start, monthTemplate)} - {format(end, monthTemplate)},{' '}
+                {format(year, yearTemplate)}
             </span>
         </styled.DateRange>
     );
@@ -25,5 +27,7 @@ export const DateRange: React.FC<DateRangeProps> = ({
 interface DateRangeProps {
     startDate: string;
     endDate: string;
+    monthTemplate?: string;
+    yearTemplate?: string;
     icon?: JSX.Element;
 }

@@ -14,8 +14,9 @@ export const StyledListItem = styled.li`
     overflow: hidden;
     padding: var(--list-item-spacing) var(--list-gutter);
 
-    i {
+    svg {
         margin-right: var(--list-item-icon-spacing);
+        flex-shrink: 0;
     }
 `;
 

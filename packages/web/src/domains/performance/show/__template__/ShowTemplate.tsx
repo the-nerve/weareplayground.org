@@ -1,20 +1,30 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { graphql, PageProps } from 'gatsby';
 
-import {
-    useConfigContext,
-    useGlobalPerformanceContext,
-} from '@web/shared/context';
 import { useGetMetaImage, useCurrentURL } from '@web/shared/hooks';
 import { PageBasicSEO, StructuredData } from '@web/domains/app/seo';
 
-import { NewsSubscribeCTA, LegacyContentNotice } from '@web/ui/molecules';
+import { Divider } from '@web/ui/core';
+import { NewsSubscribeCTA } from '@web/ui/molecules';
 
 import { SingleSeasonProvider } from '../../season/__context__';
 import { SingleShowProvider } from '../__context__';
 import { ShowPageProps, ShowPageGatsbyContext } from './types';
 
-import { Hero, ActionBar } from './components';
+import {
+    getTotalPerformanceCount,
+    getTotalTicketedPerformanceCount,
+    getTotalPWYWPerformanceCount,
+} from '../__lib__';
+
+import {
+    Hero,
+    ActionBar,
+    Performances,
+    PerformanceStats,
+    TheStory,
+    Information,
+} from './components';
 
 const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
     ({ data, pageContext, location }) => {
@@ -23,6 +33,12 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
 
         const url = useCurrentURL(location.pathname);
         const metaImage = useGetMetaImage('show', show.seo.image);
+
+        const performanceCount = {
+            total: getTotalPerformanceCount(show.performances),
+            ticketed: getTotalTicketedPerformanceCount(show.performances),
+            pwyw: getTotalPWYWPerformanceCount(show.performances),
+        };
 
         return (
             <SingleSeasonProvider slug={seasonSlug}>
@@ -47,17 +63,27 @@ const SingleShowLanding: React.FC<PageProps<PageData, ShowPageGatsbyContext>> =
                             }}
                         />
                     )}
-                    <LegacyContentNotice
-                        contentType="show"
-                        title={`${show.title}`}
-                        subTitle={`by ${show.author.name}`}
-                        legacyURL={`https://theplaygroundtheatre.org/shows/${slug}`}
-                        legacyURLText="See show on old website"
-                    />
-                    {/* <Hero
-                        bgImage={{ image: show.heroImage.asset }}
+                    <Hero
+                        bgImage={{ image: show?.heroImage?.asset }}
                         actionBar={<ActionBar url={url} />}
-                    /> */}
+                    />
+                    <TheStory rawContent={show._rawDescription} />
+                    <Divider color="paper" />
+                    <Information
+                        runtime={{
+                            hours: show.runtimeHours,
+                            minutes: show.runtimeMinutes,
+                        }}
+                        intermissionCount={show.intermissionCount}
+                        location={show.location}
+                        series={show.series}
+                        rating={show.rating}
+                        triggerWarning={show.triggerWarning}
+                        contentAdvisory={show.contentAdvisory}
+                        effectsAdvisory={show.effectsAdvisory}
+                    />
+                    <PerformanceStats performanceCount={performanceCount} />
+                    <Performances performances={show.performances} />
                     <NewsSubscribeCTA />
                 </SingleShowProvider>
             </SingleSeasonProvider>
@@ -78,7 +104,7 @@ export const showQuery = graphql`
             #     status
             # }
 
-            # # Core Info
+            # CORE SHOW INFO
             heroImage {
                 asset {
                     _id
@@ -98,41 +124,55 @@ export const showQuery = graphql`
             openDate
             closeDate
 
+            ## PERFORMANCE INFORMATION
+
+            # Series Information
+            series {
+                title
+                identifier
+                description
+            }
+
             # Location Information
-            # location {
-            #     googleTitle
-            #     address {
-            #         city
-            #         state
-            #         stateCode
-            #         street
-            #         zipcode
-            #     }
-            #     Geolocation {
-            #         lat
-            #         lng
-            #     }
-            #     _rawDirections(resolveReferences: { maxDepth: 10 })
-            #     _rawParking(resolveReferences: { maxDepth: 10 })
-            # }
+            location {
+                googleTitle
+                title
+                address {
+                    city
+                    state
+                    stateCode
+                    street
+                    zipcode
+                }
+                geolocation {
+                    lat
+                    lng
+                }
+                # _rawDirections(resolveReferences: { maxDepth: 10 })
+                # _rawParking(resolveReferences: { maxDepth: 10 })
+            }
 
-            # Addition Performance Details
-            # rating
-            # runtimeHours
-            # runtimeMinutes
-            # intermissionCount
+            # Additional Performance Information
+            runtimeHours
+            runtimeMinutes
+            intermissionCount
 
-            # contentAdvisory {
-            #     _rawModalContent(resolveReferences: { maxDepth: 10 })
-            #     copy
-            #     hasModal
-            # }
+            # Content-related ratings & advisories
+            rating
+            triggerWarning
+            contentAdvisory {
+                _rawModalContent(resolveReferences: { maxDepth: 10 })
+                copy
+                hasModal
+                modalTriggerText
+            }
 
-            # effectsAdvisory {
-            #     _rawModalContent(resolveReferences: { maxDepth: 10 })
-            #     copy
-            #     hasModal
-            # }
+            effectsAdvisory {
+                _rawModalContent(resolveReferences: { maxDepth: 10 })
+                copy
+                hasModal
+                modalTriggerText
+            }
 
             # additionalDetails {
             #     title
@@ -142,6 +182,23 @@ export const showQuery = graphql`
             #     modalTriggerText
             #     _rawModalContent(resolveReferences: { maxDepth: 10 })
             # }
+
+            ## PERFORMANCE AND TICKETS
+            performances {
+                datetime
+                hasTalkback
+                isPWYW
+                isPreview
+                status
+                tickets {
+                    type
+                    price
+                    externalLink
+                }
+            }
+
+            ## MESSAGING
+            _rawDescription(resolveReferences: { maxDepth: 10 })
 
             ## SEO Settings
             _createdAt

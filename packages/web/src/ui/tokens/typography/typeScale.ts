@@ -112,6 +112,9 @@ const generateFontSizings = (
  * Generate final font sizings for consumption by components in our app.
  */
 export const fontSizes = {
+    'size-1': css`
+        font-size: 0.75rem;
+    `,
     /**
      * Approx 14px for size0 -  We are stepping outside of the scale here with a custom size.
      * It looks better! We are also skipping the small scalar size.

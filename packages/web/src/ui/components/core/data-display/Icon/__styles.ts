@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { breakpoints, iconSizes } from '@web/ui/tokens';
+import { SVGElement } from '../../_utility';
 import { IconProps } from './__types';
 
 /**
@@ -29,16 +30,8 @@ const getIconSize = (
     `;
 };
 
-export const Icon = styled.i<IconProps>`
-    align-items: center;
-    display: flex;
-    justify-content: center;
+export const Icon = styled(SVGElement)<IconProps>`
     color: ${({ theme, color }) =>
         color ? theme.icons[color].color.default : 'inherit'};
-
     ${({ size, responsive }) => getIconSize(size, responsive)};
-
-    > svg {
-        ${({ size, responsive }) => getIconSize(size, responsive)};
-    }
 `;

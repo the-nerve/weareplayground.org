@@ -17,13 +17,13 @@ const LinkItem: React.FC<{ slug: string; text: string }> = ({ slug, text }) => (
     </li>
 );
 
-export const DesktopNavBar: React.FC = () => {
+export const DesktopNavigation: React.FC = () => {
     const {
         links: { archivePage, supportUsPage },
     } = useConfigContext();
 
     return (
-        <styled.DesktopNavBar
+        <styled.DesktopNavigation
             aria-labelledby="mainmenulabel"
             data-nav-scope="desktop"
         >
@@ -60,6 +60,6 @@ export const DesktopNavBar: React.FC = () => {
                     </FillButton>
                 </li>
             </ul>
-        </styled.DesktopNavBar>
+        </styled.DesktopNavigation>
     );
 };

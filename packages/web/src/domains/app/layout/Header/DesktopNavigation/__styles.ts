@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { animation, spacing } from '@web/ui/tokens';
 
-export const DesktopNavBar = styled.nav`
+export const DesktopNavigation = styled.nav`
     ul {
         align-items: center;
         display: flex;

@@ -65,7 +65,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     color="primary"
                     size="m"
                     className="action"
-                    endIcon={<Icon name="ArrowRight" size="m" />}
+                    endIcon={<Icon name="ArrowRight" size="xs" />}
                     animateIconOnHover
                     animateOnClick
                 >

@@ -66,10 +66,8 @@ export const FooterNav = styled.nav`
         align-items: center;
         display: flex;
 
-        i {
+        svg {
             margin-right: ${spacing.component.s};
-            position: relative;
-            top: 2px;
         }
     }
 `;

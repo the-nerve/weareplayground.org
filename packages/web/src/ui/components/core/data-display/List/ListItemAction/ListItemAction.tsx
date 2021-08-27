@@ -15,7 +15,7 @@ export const StyledListItemAction = styled.li`
         padding: var(--list-item-spacing) var(--list-gutter);
     }
 
-    i {
+    svg {
         margin-right: var(--list-item-icon-spacing);
     }
 

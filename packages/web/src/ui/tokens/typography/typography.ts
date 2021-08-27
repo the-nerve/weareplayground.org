@@ -37,6 +37,11 @@ export const typography = {
             ${fontSizes.size0};
             line-height: 1.6;
         `,
+        xs: css`
+            ${fonts.bodyText};
+            ${fontSizes['size-1']};
+            line-height: 1.4;
+        `,
     },
 
     // Body » Bold
@@ -59,6 +64,11 @@ export const typography = {
         s: css`
             ${fonts.bodyBold};
             ${fontSizes.size0};
+            line-height: 1.4;
+        `,
+        xs: css`
+            ${fonts.bodyBold};
+            ${fontSizes['size-1']};
             line-height: 1.4;
         `,
     },

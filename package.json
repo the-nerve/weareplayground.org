@@ -1,6 +1,6 @@
 {
   "name": "nerve.website",
-  "version": "1.3.3",
+  "version": "1.4.0",
   "private": true,
   "description": "A modern website and cms monorepo, built for The Nerve",
   "repository": "https://github.com/the-nerve/nerve.web",

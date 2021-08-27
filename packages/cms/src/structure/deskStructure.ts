@@ -77,6 +77,7 @@ export default () =>
                             S.documentTypeListItem('show'),
                             S.documentTypeListItem('season'),
                             S.divider(),
+                            S.documentTypeListItem('series'),
                             S.documentTypeListItem('artist'),
                             S.documentTypeListItem('location'),
                             S.documentTypeListItem('organization'),

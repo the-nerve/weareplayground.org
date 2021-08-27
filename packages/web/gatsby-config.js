@@ -43,6 +43,9 @@ module.exports = {
         isDeployPreview,
         isProd,
     },
+    flags: {
+        PRESERVE_WEBPACK_CACHE: true,
+    },
     plugins: [
         /**
          * @link https://www.gatsbyjs.com/plugins/gatsby-plugin-typescript/

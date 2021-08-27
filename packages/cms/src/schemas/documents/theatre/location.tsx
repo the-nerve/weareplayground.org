@@ -28,8 +28,8 @@ export const schema: DocumentCollection = {
             type: 'address',
         },
         {
-            name: 'Geolocation',
-            title: 'geolocation',
+            name: 'geolocation',
+            title: 'Geolocation',
             type: 'geopoint',
         },
         {

@@ -8,21 +8,6 @@ export const selectors = {
     },
     fields: [
         {
-            title: 'Select » show series',
-            name: 'series',
-            description: 'Select the series this show is a part of',
-            type: 'string',
-            options: {
-                layout: 'radio',
-                direction: 'horizontal',
-                list: [
-                    { title: 'Core', value: 'core' },
-                    { title: 'Alter Ego', value: 'alter-ego' },
-                ],
-            },
-            validation: (Rule: any) => Rule.required(),
-        },
-        {
             title: 'Select » show type',
             name: 'type',
             description: '',

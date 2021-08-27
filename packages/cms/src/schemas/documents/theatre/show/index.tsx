@@ -17,6 +17,7 @@ import season from './fields/season';
 import selectors from './fields/selectors';
 import sponsors from './fields/sponsors';
 import toggles from './fields/toggles';
+import series from './fields/series';
 
 import * as showObjects from './objects';
 
@@ -66,6 +67,7 @@ export const schema: DocumentCollection = {
             validation: (Rule: any) => Rule.required(),
         },
         season,
+        series,
         author,
         toggles,
         selectors,
@@ -79,11 +81,12 @@ export const schema: DocumentCollection = {
     initialValue: {
         toggles: {
             isHiddenFromWebsite: false,
-            isHCollaboration: false,
+            isCollaboration: false,
         },
         selectors: {
             type: 'live',
             status: 'active',
+            series: 'core',
         },
         contentAdvisory: {
             hasModal: false,
@@ -92,7 +95,7 @@ export const schema: DocumentCollection = {
             hasModal: false,
         },
         seo: {
-            hideDocument: false,
+            hide: false,
             publishedAt: new Date().toISOString(),
         },
     },
@@ -125,8 +128,8 @@ export const objects = [
     showObjects.effectsAdvisory,
     showObjects.contentAdvisory,
     showObjects.detailItem,
+    showObjects.tickets,
     showObjects.performance,
-    showObjects.ticket,
     showObjects.scriptAuthor,
     showObjects.selectors,
     showObjects.toggles,

@@ -2,6 +2,8 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 import {
+    breakpoints,
+    AvailableBreakpoint,
     elevation as elevationTokens,
     spacing as spacingTokens,
     AvailableComponentSpacing,
@@ -14,16 +16,31 @@ import { PaperProps } from '../../surfaces/Paper/Paper.types';
 // TYPES
 export interface CardProps extends PaperProps {
     layout?: 'inline' | 'stacked';
-    spacing?: AvailableComponentSpacing;
+    spacing?: {
+        desktop: AvailableComponentSpacing;
+        mobile: AvailableComponentSpacing;
+    };
+    breakpoint?: AvailableBreakpoint;
     elevation?: AvailableElevation;
     withGutter?: true;
 }
 
+const getCardSpacing = (
+    breakpoint: CardProps['breakpoint'],
+    spacing: CardProps['spacing']
+) => {
+    return css`
+        --card-spacing: ${spacingTokens.component[spacing!.mobile]};
+        ${breakpoints[breakpoint!]} {
+            --card-spacing: ${spacingTokens.component[spacing!.desktop]};
+        }
+    `;
+};
+
 // STYLES
 export const StyledCard = styled(Paper)<CardProps>`
     /* Control card spacing for all elements */
-    --card-spacing: ${({ spacing }) =>
-        spacing ? spacingTokens.component[spacing] : ''};
+    ${({ breakpoint, spacing }) => getCardSpacing(breakpoint, spacing)}
 
     display: flex;
     flex-direction: ${({ layout }) => (layout === 'inline' ? 'row' : 'column')};
@@ -41,7 +58,8 @@ export const StyledCard = styled(Paper)<CardProps>`
 export const Card: React.FC<CardProps> = ({
     layout = 'stacked',
     elevation,
-    spacing = 'm',
+    spacing = { desktop: 'm', mobile: 'm' },
+    breakpoint = 'm',
     withGutter,
     children,
     ...rest
@@ -51,6 +69,7 @@ export const Card: React.FC<CardProps> = ({
             layout={layout}
             elevation={elevation}
             spacing={spacing}
+            breakpoint={breakpoint}
             withGutter={withGutter}
             {...rest}
         >

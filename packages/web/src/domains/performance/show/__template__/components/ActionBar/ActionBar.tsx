@@ -14,9 +14,9 @@ export const ActionBar: React.FC<IActionBar> = ({ url }) => {
         <styled.ActionBar>
             <Container className="container">
                 <div className="dates">
-                    <BodyText color="light" size="l" weight="bold">
+                    <BodyText color="light" size="m" weight="bold">
                         <DateRange
-                            icon={<Icon name="Calendar" size="m" />}
+                            icon={<Icon name="Calendar" size="s" />}
                             startDate={currentShow?.openDate || 'tbd'}
                             endDate={currentShow?.closeDate || 'tbd'}
                         />

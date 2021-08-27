@@ -7,5 +7,9 @@ export const grid = {
     xxs: '480px',
 };
 
+export const flexibleContainerWidth = 93;
+export const totalContainerGutter = 100 - flexibleContainerWidth;
+export const containerGutter = totalContainerGutter / 2;
+
 export type GridSizes = typeof grid;
 export type AvailableGridSize = keyof GridSizes;
